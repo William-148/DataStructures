@@ -1,8 +1,8 @@
-import { ListNode } from "./ListNode";
+import { SimpleNode } from "./ListNode";
 import { List } from "./List";
 
 export class LinkedList<T> extends List<T> {
-    protected _head: ListNode<T> | null;
+    protected _head: SimpleNode<T> | null;
 
     constructor() {
         super();
@@ -10,7 +10,7 @@ export class LinkedList<T> extends List<T> {
     }
 
     public insert(value: T): void {
-        const newListNode = new ListNode(value);
+        const newListNode = new SimpleNode(value);
         this._size++;
         if (this._head === null) {
             this._head = newListNode;
@@ -51,10 +51,10 @@ export class LinkedList<T> extends List<T> {
      * @param predicate Callback function to find the node.
      * @returns Object with the finded node and the previous node.
      */
-    private findNode(predicate: (value: T, index: number) => boolean): { finded: ListNode<T>, previous: ListNode<T> | null } | null {
+    private findNode(predicate: (value: T, index: number) => boolean): { finded: SimpleNode<T>, previous: SimpleNode<T> | null } | null {
         let index = 0;
-        let toEvaluate: ListNode<T> | null = this._head;
-        let previous: ListNode<T> | null = null;
+        let toEvaluate: SimpleNode<T> | null = this._head;
+        let previous: SimpleNode<T> | null = null;
         while (toEvaluate !== null) {
             if (predicate(toEvaluate.value, index)) {
                 return { finded: toEvaluate, previous }
