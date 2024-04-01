@@ -7,6 +7,8 @@ export abstract class List<T> {
 
     get size(): number { return this._size; }
 
+    public abstract insert(value: T): void;
+
     public abstract exist(value: T): boolean;
 
     public abstract find(predicate: (value: T, index: number) => boolean): T | null;
